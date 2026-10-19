@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Make Minecraft Mods — PvP & QoL for Beginners</title>
+  <!-- Link to stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / hero -->
+  <header class="hero">
+    <div class="container hero-inner">
+      <div>
+        <h1>Make Minecraft Mods</h1>
+        <p class="tagline">PvP & Quality-of-Life plugins — fun, fast, and beginner-friendly.</p>
+        <p class="audience">For 15–16 year olds learning to code mods for the first time 🎮✨</p>
+      </div>
+      <button class="cta" id="start-btn">Start Learning</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Short intro -->
+    <section id="intro" class="card">
+      <h2>What you'll learn</h2>
+      <ul>
+        <li>Basics of Minecraft modding & plugin concepts</li>
+        <li>How PvP mods change player combat</li>
+        <li>How Quality-of-Life (QoL) plugins make the game friendlier</li>
+        <li>A simple worked example and a hands-on quiz with instant feedback</li>
+      </ul>
+    </section>
+
+    <!-- Beginner concepts -->
+    <section id="basics" class="card">
+      <h2>Modding basics (Simple)</h2>
+      <div class="grid">
+        <div class="panel">
+          <h3>Language</h3>
+          <p>Most Minecraft Java mods/plugins use Java. You write code, compile it, and give the plugin to a server or mod loader.</p>
+        </div>
+        <div class="panel">
+          <h3>APIs</h3>
+          <p>Spigot/Bukkit and Paper are popular server APIs for plugins. Fabric and Forge are used for client/server mods.</p>
+        </div>
+        <div class="panel">
+          <h3>How to test</h3>
+          <p>Run a local test server. Copy your plugin/mod file into the server's plugins/mods folder and restart.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Worked example -->
+    <section id="example" class="card">
+      <h2>Worked example — Simple PvP QoL Plugin</h2>
+      <p>Goal: Add a small PvP feature that shows a player a health bar with names during combat and gives a small speed boost for quick escapes.</p>
+
+      <!-- Simple annotated pseudo-code (keeps it beginner-friendly) -->
+      <pre class="code-block">
+// Example (pseudo-Java for a Bukkit/Spigot plugin)
+
+// 1) Listen for when a player damages another player
+public void onPlayerDamage(PlayerDamageEvent e) {
+  if (e.getTarget() is Player && e.getAttacker() is Player) {
+    // 2) Show the target's health above their name (client-side display)
+    showNameplateHealth(e.getTarget());
+
+    // 3) Give attacker a tiny speed boost for 3 seconds
+    addSpeedBoost(e.getAttacker(), durationSeconds=3, level=1);
+  }
+}
+
+// 4) Put compiled plugin jar into server/plugins/ and restart
+      </pre>
+
+      <p class="mini-tip">Tip: Start small. Make one tiny change, test it, then add another. That keeps learning fun and fast.</p>
+    </section>
+
+    <!-- Interactive quiz -->
+    <section id="quiz" class="card">
+      <h2>Quick quiz — test what you learned (instant feedback)</h2>
+      <p class="small">Select an answer and you'll see instant feedback below each question. Try all 5!</p>
+
+      <form id="quiz-form" aria-labelledby="quiz">
+        <!-- Question template: each radio has data-correct and data-explain -->
+        <div class="question" data-q="1">
+          <h3>1. Which programming language is most commonly used for Minecraft Java mods?</h3>
+          <label><input type="radio" name="q1" value="A" data-correct="false" data-explain="Not usually — JavaScript is not used for standard Minecraft Java mods."> A) JavaScript</label>
+          <label><input type="radio" name="q1" value="B" data-correct="true" data-explain="Correct! Java is the main language for Minecraft Java edition mods/plugins."> B) Java</label>
+          <label><input type="radio" name="q1" value="C" data-correct="false" data-explain="Python isn't the common choice for Minecraft Java mods."> C) Python</label>
+          <div class="feedback" aria-live="polite"></div>
+        </div>
+
+        <div class="question" data-q="2">
+          <h3>2. What is a "QoL" (Quality-of-Life) plugin?</h3>
+          <label><input type="radio" name="q2" value="A" data-correct="true" data-explain="Right — QoL plugins make gameplay easier or nicer without changing core rules."> A) A plugin that improves user experience and convenience</label>
+          <label><input type="radio" name="q2" value="B" data-correct="false" data-explain="That's a PvP feature, not the general idea of QoL."> B) A plugin that only changes combat mechanics</label>
+          <label><input type="radio" name="q2" value="C" data-correct="false" data-explain="Not accurate — QoL isn't limited to graphical changes."> C) Only graphical upgrades</label>
+          <div class="feedback" aria-live="polite"></div>
+        </div>
+
+        <div class="question" data-q="3">
+          <h3>3. Where do you usually put a compiled plugin file to test on a Spigot server?</h3>
+          <label><input type="radio" name="q3" value="A" data-correct="false" data-explain="Not the right place — config is different."> A) config/</label>
+          <label><input type="radio" name="q3" value="B" data-correct="true" data-explain="Exactly — plugins go into the server's plugins/ directory."> B) plugins/</label>
+          <label><input type="radio" name="q3" value="C" data-correct="false" data-explain="mods/ is used by Forge/Fabric, not Spigot plugins."> C) mods/</label>
+          <div class="feedback" aria-live="polite"></div>
+        </div>
+
+        <div class="question" data-q="4">
+          <h3>4. What do you need installed to compile a Java Minecraft plugin?</h3>
+          <label><input type="radio" name="q4" value="A" data-correct="true" data-explain="Correct — the Java Development Kit (JDK) is required to compile Java code."> A) JDK (Java Development Kit)</label>
+          <label><input type="radio" name="q4" value="B" data-correct="false" data-explain="Not by itself — a text editor alone doesn't compile code."> B) Only a text editor</label>
+          <label><input type="radio" name="q4" value="C" data-correct="false" data-explain="No — an image editor can't compile code."> C) An image editor</label>
+          <div class="feedback" aria-live="polite"></div>
+        </div>
+
+        <div class="question" data-q="5">
+          <h3>5. A simple PvP QoL idea: when a player is damaged, show their health to the attacker. Which two things do you need?</h3>
+          <label><input type="radio" name="q5" value="A" data-correct="false" data-explain="Only one piece. You also need to run the code when damage happens."> A) A new texture pack</label>
+          <label><input type="radio" name="q5" value="B" data-correct="true" data-explain="Yes — an event listener for damage and code to send the nameplate/health update."> B) An event listener and code to show the nameplate</label>
+          <label><input type="radio" name="q5" value="C" data-correct="false" data-explain="Not relevant — a web server isn't required."> C) A web server and database</label>
+          <div class="feedback" aria-live="polite"></div>
+        </div>
+
+        <div class="quiz-controls">
+          <div id="score">Score: 0 / 5</div>
+          <button type="button" id="reset-quiz" class="muted">Reset Quiz</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="card foot">
+      <p>Made for classrooms — try small experiments, test locally, and have fun building! 🚀</p>
+    </footer>
+  </main>
+
+  <!-- Link to script -->
+  <script src="script.js"></script>
+</body>
+</html>
