@@ -1,0 +1,165 @@
+/* Main styling for the beginner Minecraft modding site */
+
+/* Color palette and layout variables */
+:root{
+  --bg: #0f1724;
+  --card: #0b1220;
+  --accent: linear-gradient(135deg,#6ee7b7,#60a5fa);
+  --highlight: #60a5fa;
+  --muted: #94a3b8;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --glass: rgba(255,255,255,0.03);
+  --radius: 12px;
+  --max-width: 980px;
+  --gap: 18px;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.08), transparent),
+              radial-gradient(1000px 500px at 90% 90%, rgba(110,231,183,0.05), transparent), 
+              var(--bg);
+  color:#e6eef8;
+  font-family:var(--font-sans);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* Page container keeps content centered */
+.container{
+  width:calc(100% - 2rem);
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:1.2rem;
+}
+
+/* Hero section */
+.hero{
+  padding:2rem 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.hero-inner{
+  display:flex;
+  gap:1.2rem;
+  align-items:center;
+  justify-content:space-between;
+}
+.hero h1{
+  margin:0;
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  letter-spacing: -0.5px;
+}
+.tagline{color:var(--muted); margin:8px 0}
+.audience{margin:0; color:#c7f9e0}
+
+/* CTA button */
+.cta{
+  background:var(--accent);
+  border:0;
+  color:#04202a;
+  padding:0.7rem 1rem;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 6px 20px rgba(96,165,250,0.12);
+}
+
+/* Cards for content sections */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  margin-top:var(--gap);
+  padding:1rem;
+  border-radius:var(--radius);
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+/* Grid panels inside basics */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+}
+.panel{background:var(--glass); padding:12px; border-radius:8px}
+
+/* Example code block */
+.code-block{
+  background:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(255,255,255,0.01));
+  padding:12px;
+  border-radius:8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+  font-size:0.92rem;
+  color:#dbeafe;
+  overflow:auto;
+  border:1px solid rgba(255,255,255,0.02);
+}
+
+/* Quiz styles */
+.question{
+  margin:0.8rem 0;
+  padding:10px;
+  border-radius:8px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+  border:1px solid rgba(255,255,255,0.02);
+}
+.question h3{margin:0 0 8px 0; font-size:1rem}
+.question label{
+  display:block;
+  padding:8px;
+  margin:6px 0;
+  border-radius:8px;
+  cursor:pointer;
+  border:1px solid transparent;
+  transition:all .12s ease;
+  background:transparent;
+}
+.question input{margin-right:10px}
+
+/* Hover + focus styles for choices */
+.question label:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,0.25)}
+.question input:focus + span{outline:2px solid var(--highlight)}
+
+/* Feedback area under each question */
+.feedback{
+  margin-top:8px;
+  padding:8px;
+  border-radius:8px;
+  font-size:0.95rem;
+  display:none;
+}
+
+/* Classes set by JS for feedback */
+.feedback.correct{display:block; background:rgba(22,163,74,0.12); color:var(--success); border:1px solid rgba(22,163,74,0.18)}
+.feedback.wrong{display:block; background:rgba(239,68,68,0.09); color:var(--danger); border:1px solid rgba(239,68,68,0.12)}
+
+/* Mark selected answer visually */
+.question .selected {
+  outline:2px solid rgba(96,165,250,0.12);
+  background:linear-gradient(90deg, rgba(96,165,250,0.03), transparent);
+}
+
+/* Quiz controls row */
+.quiz-controls{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-top:10px;
+  justify-content:space-between;
+}
+#score{font-weight:700; color:var(--highlight)}
+button.muted{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:8px;border-radius:10px;cursor:pointer}
+
+/* Footer */
+footer.foot{display:flex;align-items:center;justify-content:center;color:var(--muted)}
+
+/* Responsive tweaks for phones */
+@media (max-width:640px){
+  .hero-inner{flex-direction:column; align-items:flex-start; gap:12px}
+  .cta{width:100%}
+  .quiz-controls{flex-direction:column; align-items:flex-start}
+}
